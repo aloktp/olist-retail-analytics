@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: Order-level dataset combining orders, items, payments, and reviews
+
+  - name: int_customer_orders
+    description: Customer-level aggregation with churn label and behavioural features
+
+  - name: int_seller_performance
+    description: Seller-level performance metrics including delivery delays and review scores

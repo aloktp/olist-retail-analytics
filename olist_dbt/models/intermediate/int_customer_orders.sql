@@ -126,14 +126,16 @@ customer_agg as (
         avg(total_delivery_days) as avg_delivery_days,
         avg(delivery_delay_days) as avg_delivery_delay,
         sum(is_late_delivery) as late_delivery_count,
-        round(sum(is_late_delivery)*100.0/count(order_id),2) as pct_orders_late,
+		-- if I don't cast below, it will be stored as string
+        cast(round(sum(is_late_delivery)*100.0/count(order_id),2)as double) as pct_orders_late,
 
         -- -------------------------
         -- CUSTOMER EXPERIENCE (REVIEWS)
         -- -------------------------
         avg(review_score) as avg_review_score,
         sum(is_low_satisfaction) as low_review_count,
-        round(sum(is_low_satisfaction)*100.0/count(order_id),2) as pct_low_reviews,
+		-- if I don't cast below, it will be stored as string
+        cast(round(sum(is_low_satisfaction)*100.0/count(order_id),2)as double) as pct_low_reviews,
 
         -- -------------------------
         -- RECENCY METRIC
